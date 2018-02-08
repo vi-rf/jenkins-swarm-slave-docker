@@ -5,6 +5,11 @@ MAINTAINER Carlos Sanchez <carlos@apache.org>
 ENV JENKINS_SWARM_VERSION 3.9
 ENV HOME /home/jenkins-slave
 
+ENV DOCKER_ARCH docker-17.09.1-ce.tgz
+RUN curl -o /tmp/$DOCKER_ARCH https://download.docker.com/linux/static/stable/x86_64/$DOCKER_ARCH \
+        && tar -zxvf /tmp/$DOCKER_ARCH -C /usr/local/bin/ --strip-components=1 docker/docker \
+        && rm /tmp/$DOCKER_ARCH
+
 # install netstat to allow connection health check with
 # netstat -tan | grep ESTABLISHED
 RUN apt-get update && apt-get install -y net-tools && rm -rf /var/lib/apt/lists/*
