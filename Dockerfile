@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM maven:3.5.2
 
 MAINTAINER Carlos Sanchez <carlos@apache.org>
 
